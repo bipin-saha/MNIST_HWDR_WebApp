@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request, jsonify
-from PIL import Image
 import os
 import torch
 from torchvision import transforms
+from flask import Flask, render_template, request, jsonify
+from PIL import Image
 from model import MnistModel
 
 app = Flask(__name__)
@@ -22,6 +22,19 @@ transforms = transforms.Compose([
     transforms.Resize((28,28)),
     transforms.ToTensor(),
 ])
+
+def predict_number(filename):
+    with Image.open(filename) as img:
+            img = transforms(img)
+            img = img.unsqueeze(0)
+            img = img.float()
+
+
+    with torch.no_grad():
+        prediction = model(img)
+
+    predicted_class = torch.argmax(prediction).item()
+    return predicted_class
 
 @app.route('/')
 def start():
@@ -43,21 +56,10 @@ def upload_image():
         file_counter +=1
         filename = os.path.join(app.config['UPLOAD_FOLDER'], str(file_counter) + '.jpg')
         file.save(filename)
+    
+        predicted_class = predict_number(filename)
+        return render_template('index.html', prediction=predicted_class)
 
-        with Image.open(filename) as img:
-            img = transforms(img)
-            img = img.unsqueeze(0)
-            img = img.float()
-
-
-        with torch.no_grad():
-            prediction = model(img)
-
-        predicted_class = torch.argmax(prediction).item()
-        print(predicted_class)
-        class_names = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-
-        return render_template('index.html', prediction=class_names[predicted_class])
 
 if __name__ == '__main__':
     app.run(debug=True)

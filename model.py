@@ -60,15 +60,3 @@ class MnistModel(nn.Module):
 
     def epoch_end(self, epoch, result):
         print("Epoch [{}], val_loss: {:.4f}, val_acc: {:.4f}".format(epoch, result['val_loss'], result['val_acc']))
-
-
-model = MnistModel()
-dummy_input = torch.rand(1, 1, 28, 28)  # Example for a single input image
-log_dir = 'logs'  # Change this to the directory where you want to store the log files
-writer = SummaryWriter(log_dir)
-writer.add_graph(model, dummy_input)
-writer.close()
-
-
-#tensorboard --logdir=logs
-
