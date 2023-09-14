@@ -7,14 +7,14 @@ from model import MnistModel
 
 app = Flask(__name__)
 
-upload_folder = 'uploads'
+upload_folder = 'MNIST_HWDR_WebApp/uploads'
 app.config['UPLOAD_FOLDER'] = upload_folder
 
 file_counter = 0
 
 ###### MODEL ######
 model = MnistModel()
-model.load_state_dict(torch.load('models/MNIST_HWDR_2D-feedforward.pth', map_location=torch.device('cpu')))
+model.load_state_dict(torch.load('MNIST_HWDR_WebApp\models\MNIST_HWDR_2D-feedforward.pth', map_location=torch.device('cpu')))
 model.eval()
 
 transforms = transforms.Compose([
