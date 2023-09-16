@@ -1,60 +1,81 @@
-# MNIST Model Architecture
-
-This GitHub repository contains the code and documentation for a Convolutional Neural Network (CNN) model designed to classify images from the MNIST dataset. The repository also includes an image, `logs.png`, which is located in the `training` folder, illustrating the training logs and performance metrics.
+# MNIST Handwritten Digit Recognition Web Application
+This is a simple web application that recognizes handwritten digits using a pre-trained Convolutional Neural Network model. Users can upload an image of a handwritten digit, and the application will predict the digit and display the result.
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Usage](#usage)
-- [Training](#training)
-- [Results](#results)
-- [License](#license)
+### Installation
+### Usage
+### Model Training
+### Folder Structure
+### Technologies Used
+### License
 
-## Introduction
+Installation
+To run this web application locally, follow these steps:
 
-The MNIST dataset is a widely used dataset in the field of machine learning and computer vision. It consists of 28x28 pixel grayscale images of handwritten digits (0-9) and their corresponding labels. The goal of this project is to build a CNN model to accurately classify these digits.
+Clone this repository to your local machine:
 
-## Usage
+bash
+Copy code
+git clone https://github.com/your-username/MNIST_HWDR_WebApp.git
+Install the required dependencies. You can use a virtual environment to manage the dependencies:
 
-To use this repository, follow these steps:
-
-1. Clone the repository to your local machine:
-
-   ```
-   git clone https://github.com/bipin-saha/MNIST_HWDR_WebApp.git
-   ```
-
-2. Navigate to the project directory:
-
-   ```
-   cd mnist-model-architecture
-   ```
-
-3. You can now explore the code and model architecture in the repository.
-
-## Training
-
-To train the CNN model, you can use the provided Python scripts. You may need to install the necessary Python libraries and dependencies, which can be found in the `requirements.txt` file. To install them, use the following command:
-
-```
+bash
+Copy code
+cd MNIST_HWDR_WebApp
+python -m venv venv
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 pip install -r requirements.txt
-```
+Download the pre-trained model checkpoint file (e.g., MNIST_HWDR_2D-feedforward.pth) and place it in the models folder.
 
-Once the dependencies are installed, you can initiate training using the `train.py` script:
+Run the Flask application:
 
-```
+bash
+Copy code
+python app.py
+Open a web browser and go to http://localhost:5000 to use the application.
+
+Usage
+Access the web application by visiting http://localhost:5000 in your web browser.
+
+Click the "Choose File" button to upload an image containing a handwritten digit.
+
+Click the "Predict" button to initiate the digit recognition process.
+
+The predicted digit will be displayed on the web page along with the uploaded image.
+
+You can upload more images to make additional predictions.
+
+Model Training
+If you want to train the MNIST digit recognition model yourself, you can follow these steps:
+
+Make sure you have installed the required dependencies as mentioned in the installation section.
+
+Open the train.py file in your code editor, and you can modify the training parameters if needed.
+
+Run the training script:
+
+bash
+Copy code
 python train.py
-```
+This will start the training process using the MNIST dataset and save the trained model checkpoint in the models folder.
 
-This script will start training the model on the MNIST dataset. You can customize hyperparameters and network architecture in the script to suit your requirements.
+You can then use the trained model checkpoint (MNIST_HWDR_2D-feedforward.pth) to replace the existing model checkpoint in the models folder for making predictions with the web application.
 
-## Results
+Folder Structure
+MNIST_HWDR_WebApp/ - Root directory of the application.
+app.py - The Flask web application script.
+train.py - Script for training the model (if needed).
+uploads/ - Folder where uploaded images are stored.
+models/ - Folder for storing pre-trained model checkpoint files.
+static/ - Folder for static assets (e.g., CSS, JavaScript).
+templates/ - HTML templates for rendering web pages.
+requirements.txt - List of Python dependencies.
+Technologies Used
+Python
+Flask
+PyTorch (for deep learning)
+HTML/CSS
+PIL (Python Imaging Library) for image processing
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-During training, various performance metrics and logs are recorded. Below is an example image (`logs.png`) showing the training logs and performance metrics:
-
-![Training Logs](/training/logs.png)
-
-This image provides valuable insights into the training process, including loss and accuracy over time.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. Feel free to use, modify, and distribute this code for your own projects.
