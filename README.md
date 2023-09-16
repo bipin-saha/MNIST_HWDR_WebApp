@@ -1,81 +1,88 @@
 # MNIST Handwritten Digit Recognition Web Application
-This is a simple web application that recognizes handwritten digits using a pre-trained Convolutional Neural Network model. Users can upload an image of a handwritten digit, and the application will predict the digit and display the result.
+
+This is a simple web application that recognizes handwritten digits using a pre-trained Convolutional Neural Network (CNN) model. Users can upload an image of a handwritten digit, and the application will predict the digit and display the result.
 
 ## Table of Contents
-### Installation
-### Usage
-### Model Training
-### Folder Structure
-### Technologies Used
-### License
+- [Installation](#installation)
+- [Usage](#usage)
+- [Model Training](#model-training)
+- [Folder Structure](#folder-structure)
+- [Technologies Used](#technologies-used)
+- [License](#license)
 
-Installation
+## Installation
 To run this web application locally, follow these steps:
 
-Clone this repository to your local machine:
+1. Clone this repository to your local machine:
 
-bash
-Copy code
-git clone https://github.com/your-username/MNIST_HWDR_WebApp.git
-Install the required dependencies. You can use a virtual environment to manage the dependencies:
+    ```bash
+    git clone https://github.com/bipin-saha/MNIST_HWDR_WebApp.git
+    ```
 
-bash
-Copy code
-cd MNIST_HWDR_WebApp
-python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-pip install -r requirements.txt
-Download the pre-trained model checkpoint file (e.g., MNIST_HWDR_2D-feedforward.pth) and place it in the models folder.
+2. Install the required dependencies. You can use a virtual environment to manage the dependencies:
 
-Run the Flask application:
+    ```bash
+    cd MNIST_HWDR_WebApp
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    pip install -r requirements.txt
+    ```
 
-bash
-Copy code
-python app.py
-Open a web browser and go to http://localhost:5000 to use the application.
+3. Download the pre-trained model checkpoint file (e.g., MNIST_HWDR_2D-feedforward.pth) and place it in the `models` folder.
 
-Usage
+4. Run the Flask application:
+
+    ```bash
+    python app.py
+    ```
+
+5. Open a web browser and go to http://localhost:5000 to use the application.
+
+## Usage
 Access the web application by visiting http://localhost:5000 in your web browser.
 
-Click the "Choose File" button to upload an image containing a handwritten digit.
+1. Click the "Choose File" button to upload an image containing a handwritten digit.
+2. Click the "Predict" button to initiate the digit recognition process.
+3. The predicted digit will be displayed on the web page along with the uploaded image.
+4. You can upload more images to make additional predictions.
 
-Click the "Predict" button to initiate the digit recognition process.
+## Model Training
 
-The predicted digit will be displayed on the web page along with the uploaded image.
-
-You can upload more images to make additional predictions.
-
-Model Training
 If you want to train the MNIST digit recognition model yourself, you can follow these steps:
 
-Make sure you have installed the required dependencies as mentioned in the installation section.
+### Model Architecture
 
-Open the train.py file in your code editor, and you can modify the training parameters if needed.
+The MNIST Digit Recognition model is a fundamental deep-learning model used for recognizing handwritten digits. Trained on the MNIST dataset, it typically employs convolutional neural networks (CNNs) to analyze and classify grayscale images of handwritten digits, each ranging from 0 to 9. This model plays a crucial role in introductory machine learning and computer vision, serving as a benchmark for evaluating the performance of various image classification algorithms. It's widely used for educational purposes and serves as a foundation for more complex image recognition tasks.
+Here's a brief overview of its architecture:
 
-Run the training script:
+- **Input Layer:** Accepts grayscale images of size 28x28 pixels.
+- **Convolutional Layer 1 (conv1):** Applies 32 filters of size 5x5 with ReLU activation and same padding. This layer reduces the spatial dimensions.
+- **Max-Pooling 1:** Performs max-pooling with a 2x2 kernel to further reduce the spatial dimensions.
+- **Convolutional Layer 2 (conv2):** Applies 64 filters of size 5x5 with ReLU activation and same padding.
+- **Max-Pooling 2:** Another max-pooling layer to further reduce spatial dimensions.
+- **Fully Connected Layer 1 (fc1):** Contains 1024 neurons with ReLU activation. It takes the flattened output of the previous layers.
+- **Dropout Layer:** Applies dropout during training to prevent overfitting.
+- **Fully Connected Layer 2 (fc2):** The final layer with 10 neurons (one for each digit class), followed by a log-softmax activation.
 
-bash
-Copy code
-python train.py
-This will start the training process using the MNIST dataset and save the trained model checkpoint in the models folder.
+### Training Script
 
-You can then use the trained model checkpoint (MNIST_HWDR_2D-feedforward.pth) to replace the existing model checkpoint in the models folder for making predictions with the web application.
+Open the `training/MNIST_CNN_FeedFrward.ipynb` file in Google Colab/Kaggle. This script is responsible for training the `MnistModel` using the MNIST dataset. You can modify hyperparameters like batch size, learning rate, and the number of training epochs if needed.
 
-Folder Structure
-MNIST_HWDR_WebApp/ - Root directory of the application.
-app.py - The Flask web application script.
-train.py - Script for training the model (if needed).
-uploads/ - Folder where uploaded images are stored.
-models/ - Folder for storing pre-trained model checkpoint files.
-static/ - Folder for static assets (e.g., CSS, JavaScript).
-templates/ - HTML templates for rendering web pages.
-requirements.txt - List of Python dependencies.
-Technologies Used
-Python
-Flask
-PyTorch (for deep learning)
-HTML/CSS
-PIL (Python Imaging Library) for image processing
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Folder Structure
+- `MNIST_HWDR_WebApp/` - Root directory of the application.
+- `app.py` - The Flask web application script.
+- `training/MNIST_CNN_FeedFrward.ipynb` - Script for training the model in Colab/Kaggle (if needed).
+- `uploads/` - Folder where uploaded images are stored.
+- `models/` - Folder for storing pre-trained model checkpoint files.
+-  `samples/` - Sample images for testing web app (not limited too).
+- `static/` - Folder for static assets (e.g., CSS, JavaScript).
+- `templates/` - HTML templates for rendering web pages.
+-  `uploads/` - Uploaded photo.
+- `requirements.txt` - List of Python dependencies.
 
+## Technologies Used
+- Python
+- Flask
+- PyTorch (for FeedForward CNN)
+- HTML/CSS
+- PIL (Python Imaging Library) for image processing
