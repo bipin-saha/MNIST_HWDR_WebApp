@@ -3,7 +3,8 @@
 This is a simple web application that recognizes handwritten digits using a pre-trained Convolutional Neural Network (CNN) model. Users can upload an image of a handwritten digit, and the application will predict the digit and display the result.
 
 ## Code Explanation[YouTube Video]
-[![YouTube](https://i9.ytimg.com/vi_webp/2GQm10JJ1BY/mq1.webp?sqp=CLTnlqgG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgZShlMA8=&rs=AOn4CLBmAEXYoUQREnr0HlSvABYC8rZksQ)](https://youtu.be/2GQm10JJ1BY)
+<a href="https://youtu.be/2GQm10JJ1BY"><img src="https://github.com/bipin-saha/MNIST_HWDR_WebApp/blob/main/Thumbnail.jpg" width="35%" height="35%"></img></a>
+
 
 
 ## Table of Contents
